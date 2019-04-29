@@ -1,0 +1,43 @@
+<include file="top"/>
+<style type="text/css">
+<!--
+.style1 {color: #990000}
+-->
+</style>
+
+<table width="766" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="229" valign="top" bgcolor="#F0F0F0"><include file="left"/></td>
+    <td width="561" align="center" valign="top" bgcolor="#FFFFFF"><table width="550" height="20" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+     
+      <table width="530" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+        <tr bgcolor="#FFEDBF">
+          <td width="92" height="25"><div align="center" style="color: #990000">名称</div></td>
+         
+          <td width="62"><div align="center" style="color: #990000">市场价</div></td>
+          <td width="62"><div align="center" style="color: #990000">会员价</div></td>
+          <td width="161"><div align="center" style="color: #990000">上架时间</div></td>
+          <td width="48"><div align="center" style="color: #FFFFFF"><span class="style1"></span></div></td>
+          <td width="42"><div align="center" style="color: #990000">操作</div></td>
+        </tr>
+  <volist name="p" id="vo">
+        <tr bgcolor="#FFFFFF">
+          <td height="25"><div align="center">{$vo.Comm_Name}</div></td>
+         
+          <td height="25"><div align="center">{$vo.Comm_MarketPrice}元</div></td>
+          <td height="25"><div align="center">{$vo.Comm_SellPrice}元</div></td>
+          <td height="25"><div align="center">{$vo.comm_SjTime|date='Y-m-d',###}</div></td>
+          <td height="25"><div align="center"><a href="__URL__/product/Comm_Id/{$vo.Id}">查看</a></div></td>
+          <td height="25"><div align="center"><a href="__URL__/addgw?id={$vo.Id}">购物</a></div></td>
+        </tr>
+  
+  	</volist> 
+  
+    </table></td>
+  </tr>
+</table>
+<include file="footer"/>

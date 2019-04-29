@@ -1,0 +1,84 @@
+<include file="top"/>
+<style type="text/css">
+<!--
+.style1 {color: #000000}
+-->
+</style>
+<table width="766" height="438" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="209" height="438" valign="top" bgcolor="#F0F0F0"> <include file="left"/></td>
+    <td width="557" align="center" valign="top" bgcolor="#FFFFFF"><table width="550" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+      
+        
+        
+           <if condition="($type eq 1)">
+          	<td height="50" background="/bike/Public/images/tuijian.gif">&nbsp;</td>
+          <elseif condition="($type eq 2)" />
+          	<td height="50" background="/bike/Public/images/hot.gif">&nbsp;</td>          
+          <elseif condition="($type eq 3)" />
+          	<td height="50" background="/bike/Public/images/new1.gif">&nbsp;</td>
+          <else />
+          	<td height="50">商品列表</td>
+		  </if>
+      </tr>
+    </table>
+      <table width="550" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td background="/bike/Public/images/line1.gif"></td>
+        </tr>
+      </table>
+      <table width="550" height="70" border="0" align="center" cellpadding="0" cellspacing="0">
+		<volist name="tj_data" id="vo">
+        <tr>
+          <td width="89"  rowspan="6"><div align="center">
+
+              <a href="__URL__/product/Comm_Id/{$vo.Id}"><img border="0" src="/bike/{$vo.Comm_Pic}" width="80" height="80"></a>
+
+          </div></td>
+          <td width="93" height="20"><div align="center" style="color: #000000">商品名称：</div></td>
+          <td colspan="5"><div align="left"><a href="__URL__/product/Comm_Id/{$vo.Id}">{$vo.Comm_Name}</a></div></td>
+        </tr>
+        <tr>
+          <td width="93" height="20"><div align="center" style="color: #000000"></div></td>
+          <td width="101" height="20"><div align="left"></div></td>
+          <td width="62"><div align="center" style="color: #000000"></div></td>
+          <td colspan="3"><div align="left"></div></td>
+        </tr>
+        <tr>
+         
+        </tr>
+        <tr>
+          <td height="20"><div align="center" style="color: #000000">上架日期：</div></td>
+          <td height="20"><div align="left">{$vo.comm_SjTime|date='Y-m-d',###}</div></td>
+          <td height="20"><div align="center" style="color: #000000">剩余数量：</div></td>
+          <td width="69" height="20"><div align="left">{$vo.Comm_Reserves}</div></td>
+          <td width="63"></td>
+          <td width="73"></td>
+        </tr>
+        <tr>
+          <td height="20"><div align="center" style="color: #000000">商场价：</div></td>
+          <td height="20"><div align="left">{$vo.Comm_MarketPrice}元</div></td>
+          <td height="20"><div align="center" style="color: #000000">销售价：</div></td>
+          <td height="20"><div align="left">{$vo.Comm_SellPrice}元</div></td>
+          <td height="20"></td>
+          <td height="20"><div align="left"></td>
+        </tr>
+        <tr>
+          <td height="20" colspan="6" width="461"><div align="center">&nbsp;&nbsp;&nbsp;&nbsp;<a href="__URL__/addgw?id={$vo.Id}"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0" style="" cursor:hand"></a></div></td>
+        </tr>
+        <tr>
+          <td height="10" colspan="7" background="/bike/Public/images/line1.gif"></td>
+        </tr>
+    </volist> 
+      </table>
+      {$page_method}
+      </td>
+  </tr>
+  <tr>
+  
+  </tr>
+</table>
+
+
+<include file="footer"/>

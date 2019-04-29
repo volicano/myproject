@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$title}</title>
+<link rel="stylesheet" href="__PUBLIC__/admin/font.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+
+<script type="text/javascript" src="__PUBLIC__/Js/admin/jquery-1.3.2.min.js"></script>
+
+<script>
+			function show(obj){
+				obj.src="__APP__/Common/verify/random/"+Math.random();
+			}
+</script>
+</head>
+
+<body id="login">
+<br><br><br><br><br>
+<div id="login-wrapper" class="png_bg">
+
+
+    
+   	<!-- Form表单 --> 
+  	<div id="login-content"> 
+    	<form name="form1" method="post" action="" onSubmit="return chkinput(this)">
+  <table width="545" border="0" align="center" cellpadding="0" cellspacing="0" id="__01">
+	<tr>
+		<td height="226" background="__PUBLIC__/admin/images/default_01.gif">&nbsp;</td>
+	</tr>
+	<tr>
+		<td height="45" align="right" background="__PUBLIC__/admin/images/default_02.gif"><table width="407" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="57" align="center">用户名：</td>
+            <td width="94" align="center"><input type="text" name="name" size="14" maxlength="20" class="inputcss"></td>
+            <td width="53" align="center">&nbsp;密&nbsp;码：</td>
+            <td width="104" align="center"><input type="password" name="pwd" size="14" maxlength="20" class="inputcss"></td>
+            <td width="99">&nbsp;
+                <input name="imageField" type="image" src="__PUBLIC__/admin/images/default_07.gif" width="74" height="24" border="0"></td>
+          </tr>
+        </table></td>
+	</tr>
+	<tr>
+		<td height="23"  background="__PUBLIC__/admin/images/default_04.gif"></td>
+	</tr>
+</table>
+</form>
+  </div>
+
+</div>	
+</body>
+</html>

@@ -1,0 +1,58 @@
+<include file="top"/>
+
+<table width="766" height="438" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="229" height="438" valign="top" bgcolor="#F4F4F4"><include file="left"/></td>
+    <td width="561" align="center" valign="top" bgcolor="#FFFFFF"><table width="550" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
+    </table>
+      <table width="557" border="0" align="center" cellpadding="0" cellspacing="0">
+        <form name="form1" method="post" action="__URL__/gouwu">
+          <tr>
+            <td height="46" background="/bike/Public/images/cart.gif"></td>
+          </tr>
+          <tr>
+            <td  bgcolor="#FFFFFF"><table width="500" border="0" align="center" cellpadding="0" cellspacing="1">
+                <if condition="$s neq 0">
+                
+                
+                
+                <tr>
+                  <td width="125" height="25" bgcolor="#FFFFFF"><div align="center">订单编号</div></td>
+                  <td width="52" bgcolor="#FFFFFF"><div align="center">数量</div></td>
+                 
+                  <td width="64" bgcolor="#FFFFFF"><div align="center">收货人</div></td>
+                  
+                  <td width="66" bgcolor="#FFFFFF"><div align="center">价钱</div></td>
+                  
+                </tr>
+    			<volist name="data" id="vo" >
+                <tr>
+                  <td height="25" bgcolor="#FFFFFF"><div align="center"><a target="_blank" href="__URL__/showdd?ddh={$vo.id}">{$vo.dingdanhao}</a></div></td>
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">
+                  
+                  </div>{$vo.slc}</td>
+                 
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">{$vo.shouhuoren}</div></td>
+                  
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">{$vo.total}元</div></td>
+                  
+                </tr>
+                 </volist>  
+       			
+                <tr>
+                  <td height="25" colspan="8" bgcolor="#FFFFFF"><div align="right">
+                      
+                  </div></td>
+                </tr>
+       <else />
+        		<tr>
+                 <td height='25' colspan='6' bgcolor='#FFFFFF' align='center'>暂无订单信息!</td>
+                </tr>
+       </if>
+            </table></td>
+          </tr>
+        </form>
+    </table></td>
+  </tr>
+</table>
+<include file="footer"/>

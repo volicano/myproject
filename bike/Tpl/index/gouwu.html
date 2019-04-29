@@ -1,0 +1,70 @@
+<include file="top"/>
+
+<table width="766" height="438" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="229" height="438" valign="top" bgcolor="#F4F4F4"><include file="left"/></td>
+    <td width="561" align="center" valign="top" bgcolor="#FFFFFF"><table width="550" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
+    </table>
+      <table width="557" border="0" align="center" cellpadding="0" cellspacing="0">
+        <form name="form1" method="post" action="__URL__/gouwu">
+          <tr>
+            <td height="46" background="/bike/Public/images/cart.gif"></td>
+          </tr>
+          <tr>
+            <td  bgcolor="#FFFFFF"><table width="500" border="0" align="center" cellpadding="0" cellspacing="1">
+                <if condition="$s neq 0">
+                
+                
+                
+                <tr>
+                  <td width="125" height="25" bgcolor="#FFFFFF"><div align="center">商品名称</div></td>
+                  <td width="52" bgcolor="#FFFFFF"><div align="center">数量</div></td>
+                 
+                  <td width="64" bgcolor="#FFFFFF"><div align="center">销售价</div></td>
+                  
+                  <td width="66" bgcolor="#FFFFFF"><div align="center">小计</div></td>
+                  <td width="71" bgcolor="#FFFFFF"><div align="center">操作</div></td>
+                </tr>
+    			<volist name="data" id="vo" >
+                <tr>
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">{$vo.Comm_Name}</div></td>
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">
+                  <input type="text" name="{$vo.Id}" size="2" class="inputcss" value="{$vo.num}">
+                  </div></td>
+                 
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">{$vo.Comm_SellPrice}元</div></td>
+                  
+                  <td height="25" bgcolor="#FFFFFF"><div align="center">{$vo.total1}元</div></td>
+                  <td height="25" bgcolor="#FFFFFF"><div align="center"><a href="__URL__/removegw?id={$vo.Id}">移除</a></div></td>
+                </tr>
+                 </volist>  
+       			
+                <tr>
+                  <td height="25" colspan="8" bgcolor="#FFFFFF"><div align="right">
+                      <table width="500" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td width="125">
+	                          <div align="center">
+	                          <input type="hidden" name="total" value="<?php echo $total;?>">
+	                              <input name="submit2" type="submit" class="buttoncss" value="更改商品数量">
+	                          </div>
+                          </td>
+                          <td width="125"><div align="center"><a href="__URL__/gouwu2?total=<?php echo $total;?>">结算</a></div></td>
+                          <td width="125"><div align="center"><a href="__URL__/gouwu?act=del">清空购物车</a></div></td>
+                          <td width="125"><div align="left">总计：<?php echo $total;?></div></td>
+                        </tr>
+                      </table>
+                  </div></td>
+                </tr>
+       <else />
+        		<tr>
+                 <td height='25' colspan='6' bgcolor='#FFFFFF' align='center'>您的购物车为空!</td>
+                </tr>
+       </if>
+            </table></td>
+          </tr>
+        </form>
+    </table></td>
+  </tr>
+</table>
+<include file="footer"/>

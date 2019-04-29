@@ -1,0 +1,296 @@
+<include file="top"/>
+<table width="766" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td></td>
+  </tr>
+  <tr>
+    <td bgcolor="#F5F5F5"><table width="766" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="209" valign="top" bgcolor="#F5F5F5"><include file="left"/></td>
+        <td width="557" height="438" align="center" valign="top" bgcolor="#F5F5F5"><table width="557"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="553" bgcolor="#FFFFFF"><table width="548" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="557"  height="50"><img src="/bike/Public/images/tuijian.gif" width="557" height="50" border="0" usemap="#Map2"></td>
+                </tr>
+              </table>
+              
+                            
+                <table width="550" border="00" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="555" height="110"><table width="530" height="110" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                        
+                         <volist name="tj_data" id="vo">                         
+                         <if condition="$vo['id']%$two eq 0">
+                          <td width="265">   
+                          <table width="270"  border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="130" rowspan="5"><div align="center">
+    
+                                    <img src="/bike/{$vo.Comm_Pic}" width="80" height="80" border="0">
+         
+                                </div></td>
+                                <td width="11" height="16">&nbsp;</td>
+                                <td width="124"><font color="FF6501"><img src="/bike/Public/images/circle.gif" width="10" height="10">&nbsp;{$vo.Comm_Name}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">市场价：</font><font color="FF6501">￥{$vo.Comm_MarketPrice}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">会员价：</font><font color="FF6501">￥{$vo.Comm_SellPrice}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">剩余数量：</font><font color="13589B">  
+                                {$vo.Comm_Reserves}
+                                
+</font></td>
+                              </tr>
+                              <tr>
+                                <td height="30" colspan="2"><a href="__URL__/product/Comm_Id/{$vo.Id}"><img src="/bike/Public/images/xiangxi_btn.gif" width="60" height="18" border="0"></a> <a href="__URL__/addgw?id={$vo.Id}"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0"></a>                                 </td>
+                              </tr>
+                            </table>
+                            </td>
+                          
+                          <else />
+                          <td width="265">
+ 
+ 
+                            <table width="270"  border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="130" rowspan="5"><div align="center">
+
+                                    <img src="<?php echo $info[tupian];?>" width="80" height="80" border="0">
+         
+                                </div></td>
+                                <td width="11" height="16">&nbsp;</td>
+                                <td width="124"><font color="FF6501"><img src="/bike/Public/images/circle.gif" width="10" height="10">&nbsp;<?php echo $info[mingcheng];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">市场价：</font><font color="FF6501"><?php echo $info[shichangjia];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">会员价：</font><font color="FF6501"><?php echo $info[huiyuanjia];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">剩余数量：</font><font color="13589B">
+        
+                                </font></td>
+                              </tr>
+                              <tr>
+                                <td height="30" colspan="2"><a href="__URL__/product/Comm_Id/{$vo.Id}"><img src="/bike/Public/images/xiangxi_btn.gif" width="60" height="18" border="0"></a> <a href="__URL__/addgw?id={$vo.Id}"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0"></a> </td>
+                              </tr>
+                            </table>
+                          </td>  
+                          </if>                        
+                          </volist> 
+                        </tr>
+                    </table>
+                    </if>
+                    
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height="10" background="/bike/Public/images/line1.gif"></td>
+                  </tr>
+                </table>
+                
+                
+              
+                
+                
+                <table width="548" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td height="46"><img src="/bike/Public/images/new.gif" width="557" height="46" border="0" usemap="#Map3"> </td>
+                  </tr>
+                </table>
+                <table width="543" border="00" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="543" height="110">
+                    
+            		<volist name="new_data" id="vo">                         
+                         <if condition="$vo['id']%$two eq 0">
+                          <td width="265">   
+                          <table width="270"  border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="130" rowspan="5"><div align="center">
+    
+                                    <img src="/bike/{$vo.Comm_Pic}" width="80" height="80" border="0">
+         
+                                </div></td>
+                                <td width="11" height="16">&nbsp;</td>
+                                <td width="124"><font color="FF6501"><img src="/bike/Public/images/circle.gif" width="10" height="10">&nbsp;{$vo.Comm_Name}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">市场价：</font><font color="FF6501">￥{$vo.Comm_MarketPrice}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">会员价：</font><font color="FF6501">￥{$vo.Comm_SellPrice}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">剩余数量：</font><font color="13589B">  
+                                {$vo.Comm_Reserves}                           
+								</font></td>
+                              </tr>
+                              <tr>
+                                <td height="30" colspan="2"><a href="__URL__/product/Comm_Id/{$vo.Id}"><img src="/bike/Public/images/xiangxi_btn.gif" width="60" height="18" border="0"></a> <a href="__URL__/addgw?id={$vo.Id}"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0"></a>                                 </td>
+                              </tr>
+                            </table>
+                            </td>
+                          
+                          <else />
+                          <td width="265">
+ 
+ 
+                            <table width="270"  border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="130" rowspan="5"><div align="center">
+
+                                    <img src="<?php echo $info[tupian];?>" width="80" height="80" border="0">
+         
+                                </div></td>
+                                <td width="11" height="16">&nbsp;</td>
+                                <td width="124"><font color="FF6501"><img src="/bike/Public/images/circle.gif" width="10" height="10">&nbsp;<?php echo $info[mingcheng];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">市场价：</font><font color="FF6501"><?php echo $info[shichangjia];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">会员价：</font><font color="FF6501"><?php echo $info[huiyuanjia];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">剩余数量：</font><font color="13589B">
+        
+                                </font></td>
+                              </tr>
+                              <tr>
+                                <td height="30" colspan="2"><a href="__URL__/product/Comm_Id/{$vo.Id}"><img src="/bike/Public/images/xiangxi_btn.gif" width="60" height="18" border="0"></a> <a href="__URL__/addgw?id={$vo.Id}"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0"></a> </td>
+                              </tr>
+                            </table>
+                          </td>  
+                          </if>                        
+                          </volist> 
+            
+            		</td>
+                  </tr>
+                  <tr>
+                    <td height="10" background="/bike/Public/images/line1.gif"></td>
+                  </tr>
+                </table>
+                <table width="548" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td height="46"><img src="/bike/Public/images/hot.gif" width="557" height="46" border="0" usemap="#Map4"> </td>
+                  </tr>
+                </table>
+                <table width="553" border="00" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="553" height="110">
+                    
+                      <volist name="hot_data" id="vo">                         
+                         <if condition="$vo['id']%$two eq 0">
+                          <td width="265">   
+                          <table width="270"  border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="130" rowspan="5"><div align="center">
+    
+                                    <img src="/bike/{$vo.Comm_Pic}" width="80" height="80" border="0">
+         
+                                </div></td>
+                                <td width="11" height="16">&nbsp;</td>
+                                <td width="124"><font color="FF6501"><img src="/bike/Public/images/circle.gif" width="10" height="10">&nbsp;{$vo.Comm_Name}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">市场价：</font><font color="FF6501">￥{$vo.Comm_MarketPrice}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">会员价：</font><font color="FF6501">￥{$vo.Comm_SellPrice}</font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">剩余数量：</font>
+                                <font color="13589B">  
+                                {$vo.Comm_Reserves}
+                                </font></td>
+                              </tr>
+                              <tr>
+                                <td height="30" colspan="2"><a href="__URL__/product/Comm_Id/{$vo.Id}"><img src="/bike/Public/images/xiangxi_btn.gif" width="60" height="18" border="0"></a> <a href="__URL__/addgw?id={$vo.Id}"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0"></a>                                 </td>
+                              </tr>
+                            </table>
+                            </td>
+                          
+                          <else />
+                          <td width="265">
+ 
+ 
+                            <table width="270"  border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="130" rowspan="5"><div align="center">
+
+                                    <img src="<?php echo $info[tupian];?>" width="80" height="80" border="0">
+         
+                                </div></td>
+                                <td width="11" height="16">&nbsp;</td>
+                                <td width="124"><font color="FF6501"><img src="/bike/Public/images/circle.gif" width="10" height="10">&nbsp;<?php echo $info[mingcheng];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">市场价：</font><font color="FF6501"><?php echo $info[shichangjia];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">会员价：</font><font color="FF6501"><?php echo $info[huiyuanjia];?></font></td>
+                              </tr>
+                              <tr>
+                                <td height="16">&nbsp;</td>
+                                <td><font color="#000000">剩余数量：</font><font color="13589B">
+        
+                                </font></td>
+                              </tr>
+                              <tr>
+                                <td height="30" colspan="2"><a href="__URL__/product/Comm_Id/{$vo.Id}"><img src="/bike/Public/images/xiangxi_btn.gif" width="60" height="18" border="0"></a> <a href="addgouwuche.php?id=<?php echo $info[id];?>"><img src="/bike/Public/images/goumai_btn.gif" width="60" height="18" border="0"></a> </td>
+                              </tr>
+                            </table>
+                          </td>  
+                          </if>                        
+                          </volist> 
+                    
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height="10"></td>
+                  </tr>
+              </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>    </td>
+  </tr>
+  <tr>
+<td>
+<include file="footer"/></td>
+</tr>
+</table>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<map name="Map2">
+  <area shape="rect" coords="504,27,543,43" href="__URL__/plist/type/1">
+</map>
+<map name="Map3">
+  <area shape="rect" coords="503,24,545,42" href="__URL__/plist/type/3">
+</map>
+<map name="Map4">
+  <area shape="rect" coords="506,24,543,39" href="__URL__/plist/type/2">
+</map>

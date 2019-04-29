@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="__PUBLIC__/asset/css/admin.css" type="text/css" rel="stylesheet">
+<script src="__PUBLIC__/asset/js/common.js"></script>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TR height=28>
+    <TD background=__PUBLIC__/asset/images/title_bg1.jpg>当前位置: <a href="">后台首页</a>&gt;&gt;商品列表</TD></TR>
+  <TR>
+    <TD bgColor=#b1ceef height=1></TD></TR></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="95%" align=center border=0>
+  <TR height=20>
+    <TD></TD></TR>
+  <TR height=22>
+    <TD style="PADDING-LEFT: 20px; FONT-WEIGHT: bold; COLOR: #ffffff" 
+    align=middle background=__PUBLIC__/asset/images/title_bg2.jpg>商品列表</TD></TR>
+  <TR bgColor=#ecf4fc height=12>
+    <TD></TD></TR>
+  </TABLE>
+<form action="" method="post">
+<input type="hidden" name="action" id="action" value="del">
+<TABLE cellSpacing=2 cellPadding=5 width="95%" align=center border=0 bgcolor="#ecf4fc">
+  <TR>
+    <th>商品编号</th>
+                <th>商品名称</th>
+                <th>图片</th>
+                <th>添加时间</th>  
+                <th>分类</th>
+                <th>库存</th>
+                <th>销量</th>               
+                <th>选项</th>
+  </TR>
+ <volist name="news_list" id="vo"> 
+  <TR>
+     <td>{$vo['Id']} </td>
+                <td><a href="#" title="title">{$vo['Comm_Name']}</a></td>
+                <td><img src="/bike/{$vo['Comm_Pic']}" width="30px" height="30px"></img></td>
+                <td>{$vo['comm_SjTime']|date='Y-m-d',###}</td>
+                <td>{$vo['type']}</td>
+                <td>{$vo['Comm_Reserves']}</td>
+                <td>{$vo['Comm_Sellnum']}</td>
+                <td>
+                  <!-- Icons -->
+                  <a href="__URL__/edit/id/{$vo['Id']}" title="编辑"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="编辑" /></a> 
+                  <a onclick="return confirm('确定删除吗？');" href="__URL__/delete/id/{$vo['Id']}" title="删除"><img src="__PUBLIC__/Images/admin/icons/cross.png" alt="删除" /></a> 
+                </td>
+  </TR>    
+ </volist>         
+
+   
+  <TR>
+    <TD colspan="5" bgcolor="#FFFFFF" align="right">
+    <br/>   
+	{$page_method}
+    </TD>
+    </TR>  
+ 
+    </TABLE>
+ </form>
+ </BODY></HTML>
