@@ -124,7 +124,7 @@
     
     <volist name="data" id="vo" >
     {$vo.Comm_Name}  * <span style="COLOR: #880000">数量： {$vo.num}</span><br>
-    <img src="/bike/{$vo.Comm_Pic}" width="25px" height="25px"></img> &nbsp;&nbsp;&nbsp;单价：{$vo.Comm_SellPrice}元<br/>
+    <img src="./{$vo.Comm_Pic}" width="25px" height="25px"></img> &nbsp;&nbsp;&nbsp;单价：{$vo.Comm_SellPrice}元<br/>
     
     </volist>  
     总计：<?php echo $total;?>元

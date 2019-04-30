@@ -31,7 +31,6 @@ class LoginAction extends Action{
 	
 	function add(){	
 		header("Content-Type:text/html; charset=utf-8");
-		
 		if($_POST){
 			$name = $_POST['name'];
 			$pwd = $_POST['pwd'];
@@ -127,7 +126,7 @@ class LoginAction extends Action{
 		//查找输入的用户名是否存在
 		if($user->where("username ='$username' AND pwd = '$password'")->find()){		
 			session(adminuser,$username);
-			$url=U('/Orders/index');			
+			$url=U('/Index/index');
 			redirect($url,0, '跳转中...');
 		}else{
 			$this->error('用户名或密码错误');
