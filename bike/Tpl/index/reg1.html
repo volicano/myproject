@@ -1,0 +1,194 @@
+<include file="top"/>
+<script language="javascript">
+  function chknc(nc)
+  {
+    window.open("chkusernc.php?nc="+nc,"newframe","width=200,height=10,left=500,top=200,menubar=no,toolbar=no,location=no,scrollbars=no,location=no");
+  }
+</script>
+<script language="javascript">
+function chkinput(form)
+{
+  if(form.usernc.value=="")
+	{
+	 alert("请输入昵称!");
+	 form.usernc.select();
+	 return(false);
+	}
+	if(form.p1.value=="")
+	{
+	 alert("请输入注册密码!");
+	 form.p1.select();
+	 return(false);
+	}
+  if(form.p2.value=="")
+	{
+	 alert("请输入确认密码!");
+	 form.p2.select();
+	 return(false);
+	 }	
+	if(form.p1.value.length<6)
+	 {
+	 alert("注册密码长度应大于6!");
+	 form.p1.select();
+	 return(false);
+	 }	
+	if(form.p1.value!=form.p2.value)
+	 {
+	 alert("密码与重复密码不同!");
+	 form.p1.select();
+	 return(false);
+	 }
+ if(form.email.value=="")
+	{
+	 alert("请输入电子邮箱地址!");
+	 form.email.select();
+	 return(false);
+	 }
+	if(form.email.value.indexOf('@')<0)
+	{
+	 alert("请输入正确的电子邮箱地址!");
+	 form.email.select();
+	 return(false);
+	 }
+ return(true);
+}
+</script>
+<table width="766" height="350" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="229" height="350" align="center" valign="top" bgcolor="#F0F0F0"><include file="left"/></td>
+    <td width="561" align="center" valign="top" bgcolor="#FFFFFF"><table width="557"  height="15" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="500"><table width="557" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="557" height="46" background="/bike/Public/images/user.gif"><div align="center" style="color: #FFFFFF"></div></td>
+            </tr>
+            <tr>            
+              <td  bgcolor="#555555"><table width="557" border="0" align="center" cellpadding="0" cellspacing="0">
+              
+                  <form name="form1" method="post" action="" onSubmit="return chkinput(this)">
+                  
+                    <tr>
+                      <td width="100" height="20" bgcolor="#FFFFFF"><div align="center">&nbsp;&nbsp;用户昵称：</div></td>
+                      <td width="397" bgcolor="#FFFFFF">
+                      <div align="left">
+                          <input type="text" name="usernc" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                          <span style="color: #FF0000">&nbsp;*</span>&nbsp;
+
+                      </div></td>
+                    </tr>
+                    <tr>
+                      <td height="20" bgcolor="#FFFFFF"><div align="center">注册密码：</div></td>
+                      <td height="20" bgcolor="#FFFFFF"><div align="left">
+                          <input type="password" name="p1" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                          <span style="color: #FF0000">*</span></div></td>
+                    </tr>
+                    <tr>
+                      <td height="20" bgcolor="#FFFFFF"><div align="center">确认密码：</div></td>
+                      <td height="20" bgcolor="#FFFFFF"><div align="left">
+                          <input type="password" name="p2" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                          <span style="color: #FF0000">*</span></div></td>
+                    </tr>
+                    <tr>
+                      <td height="20" bgcolor="#FFFFFF"><div align="center">E-mail：</div></td>
+                      <td height="20" bgcolor="#FFFFFF"><div align="left">
+                          <input type="text" name="email" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                          <span style="color: #FF0000">*</span></div></td>
+                    </tr>
+                   &nbsp;&nbsp;
+                      &nbsp;
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">真实姓名：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <input type="text" name="truename" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                              <span style="color: #FF0000"></span></div></td>
+                      </tr>
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">性别：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <select name="sex">
+                                  <option value ="1">男</option>
+                                  <option value ="0">女</option>
+                              </select>
+                              <span style="color: #FF0000"></span></div></td>
+                      </tr>
+
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">电话号码：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <input type="text" name="tel" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                              <span style="color: #FF0000"></span></div></td>
+                      </tr>
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">qq号码：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <input type="text" name="qq" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                              <span style="color: #FF0000"></span></div></td>
+                      </tr>
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">联系地址：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <input type="text" name="address" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                              <span style="color: #FF0000"></span></div></td>
+                      </tr>
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">邮编：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <input type="text" name="yb" size="25" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                              <span style="color: #FF0000"></span></div></td>
+                      </tr>
+
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">头像：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <select name="photo" onchange="javascript:user_face.src=this.value">
+                                  <?php
+                                  for($i=0;$i<=11;$i++){
+                                  ?>
+                                  <option value=""><?php echo $i;?></option>
+                                  <?php
+                                  }
+                                  ?>
+                              </select>
+                          </div></td>
+                      </tr>
+
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">密码保护问题：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <select name="question">
+                                  <option value="" selected="selected">请选择一个问题</option>
+                                  <option value="我就读的第一所学校的名称？">我就读的第一所学校的名称？</option>
+                                  <option  value="我最喜欢的休闲运动是什么？">我最喜欢的休闲运动是什么？</option>
+                                  <option value="我最喜欢的运动员是谁？">我最喜欢的运动员是谁？</option>
+                                  <option value="我最喜欢的物品的名称？">我最喜欢的物品的名称？</option>
+                              </select>
+                          </div></td>
+                      </tr>
+
+                      <tr>
+                          <td height="20" bgcolor="#FFFFFF"><div align="center">答案：</div></td>
+                          <td height="20" bgcolor="#FFFFFF"><div align="left">
+                              <input type="text" name="answer" size="35" class="inputcss" />
+                              &nbsp;(为了能够找回丢失的密码，请记住该答案！)</div></td>
+                      </tr>
+                      <tr>
+                      <td height="20" colspan="2" bgcolor="#FFFFFF"><div align="center">
+                          <input name="submit2" type="submit" class="buttoncss" value="提交">
+&nbsp;&nbsp;
+                      <input name="reset" type="reset" class="buttoncss" value="重写">
+                      </div></td>
+                    </tr>
+                  </form>
+              </table></td>
+            </tr>
+          </table>
+            <table width="557" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="547"><div align="center" style="color: #FF0000">注意：带*为必添内容!</div></td>
+              </tr>
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<include file="footer"/>

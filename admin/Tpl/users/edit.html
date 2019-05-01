@@ -49,18 +49,18 @@
 	<table cellSpacing=2 cellPadding=5 width="95%" align=center border=0 bgcolor="#ecf4fc">  
   <tr>
     <td width=100 align=right bgcolor="#FFFFFF">用户昵称(<font color="red" class="txtRed">*</font>)：</td>
-    <td bgcolor="#FFFFFF" style="COLOR: #880000"><input name="User_UserName" readonly="readonly" type="text" id="User_UserName" value="{$user.User_UserName}"></td></tr>    
+    <td bgcolor="#FFFFFF" style="COLOR: #880000"><input name="User_UserName" readonly="readonly" type="text" id="User_UserName" value="{$user.usernc}"></td></tr>
   <tr>
     <td align=right valign="top" bgcolor="#FFFFFF">性别(<font color="red">*</font>)：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <if condition="$user['User_Sex'] eq 1"> 
+     <if condition="$user['sex'] eq 1">
               <input type="radio" name="sex" value="1" checked/>
                <else/>
                <input type="radio" name="sex" value="1"/>
                </if>     
               	男
               	
-              <if condition="$user['User_Sex'] eq 2">
+              <if condition="$user['sex'] eq 2">
               <input type="radio" name="sex" value="2" checked/>
               <else/>
               <input type="radio" name="sex" value="2"/>
@@ -80,14 +80,14 @@
   <tr>
     <td align=right valign="top" bgcolor="#FFFFFF">Email：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" readonly="readonly" type="text" id="User_Email" name="User_Email" value="{$user.User_Email}"/>  
+     <input class="text-input small-input" readonly="readonly" type="text" id="User_Email" name="User_Email" value="{$user.email}"/>
     </td>
     </tr>
     
       <tr>
-    <td align=right valign="top" bgcolor="#FFFFFF">生日 ：</td>
+    <td align=right valign="top" bgcolor="#FFFFFF">注册日期 ：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" readonly="readonly" type="text" id="User_Birthdat" name="User_Birthdat" value="{$user.User_Birthdat|date='Y-m-d',###}"/>YYYY-MM-DD形式       
+     <input class="text-input small-input" readonly="readonly" type="text" id="User_Birthdat" name="User_Birthdat" value="{$user.regtime|date='Y-m-d',###}"/>YYYY-MM-DD形式
     </td>
     </tr>
     
@@ -99,86 +99,59 @@
     </tr>
     
        <tr>
-    <td align=right valign="top" bgcolor="#FFFFFF">手机 ：</td>
-    <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" type="text" readonly="readonly" id="User_Mobile" name="User_Mobile" value="{$user.User_Mobile}"/>  
-    </td>
-    </tr>
-    
-       <tr>
     <td align=right valign="top" bgcolor="#FFFFFF">联系电话 ：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" type="text" readonly="readonly" id="User_Telephone" name="User_Telephone" value="{$user.User_Telephone}"/>  
+     <input class="text-input small-input" type="text" id="User_Mobile" name="User_Mobile" value="{$user.tel}"/>
     </td>
     </tr>
     
        <tr>
-    <td align=right valign="top" bgcolor="#FFFFFF">所在地区 ：</td>
+    <td align=right valign="top" bgcolor="#FFFFFF">联系QQ ：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     省：<select name="User_Province" id="Select1"></select>
-				市：<select name="User_City" id="Select2"></select>
-				区：<select name="User_Area" id="Select3"></select>
-					
-					<script type="text/javascript">
-					addressInit('Select1', 'Select2', 'Select3',"{$user['User_Province']}","{$user['User_City']}", "{$user['User_Area']}");
-					</script>				
+     <input class="text-input small-input" type="text" id="qq" name="qq" value="{$user.qq}"/>
+    </td>
+    </tr>
+    
+       <tr>
+    <td align=right valign="top" bgcolor="#FFFFFF">联系地址 ：</td>
+    <td bgcolor="#FFFFFF" style="COLOR: #880000">    
+
 				
-				<input class="text-input small-input" type="text" id="User_Address" name="User_Address" value="{$user.User_Address}"/>            
+				<input class="text-input small-input" type="text" id="User_Address" name="User_Address" value="{$user.address}"/>
                                 
     </td>
     </tr>
     
            <tr>
-    <td align=right valign="top" bgcolor="#FFFFFF">QQ ：</td>
+    <td align=right valign="top" bgcolor="#FFFFFF">邮编 ：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" type="text" readonly="readonly" id="User_QQ" name="User_QQ" value="{$user.User_QQ}"/>  
+     <input class="text-input small-input" type="text" id="yb" name="yb" value="{$user.yb}"/>
     </td>
     </tr>
     
            <tr>
     <td align=right valign="top" bgcolor="#FFFFFF">安全问题 ：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" type="text" readonly="readonly" id="User_SafeQues" name="User_SafeQues" value="{$user.User_SafeQues}"/>  
+     <input class="text-input small-input" type="text" readonly="readonly" id="User_SafeQues" name="User_SafeQues" value="{$user.question}"/>
     </td>
     </tr>
     
            <tr>
     <td align=right valign="top" bgcolor="#FFFFFF">安全答案 ：</td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-     <input class="text-input small-input" type="text" readonly="readonly" id="User_SafeAnswer" name="User_SafeAnswer" value="{$user.User_SafeAnswer}"/>  
+     <input class="text-input small-input" type="text" readonly="readonly" id="User_SafeAnswer" name="User_SafeAnswer" value="{$user.answer}"/>
     </td>
     </tr>
-    
-               <tr>
-    <td align=right valign="top" bgcolor="#FFFFFF">等级 ：</td>
-    <td bgcolor="#FFFFFF" style="COLOR: #880000">    
-      <select name="User_Grade" class="small-input">
-               	<if condition="$user['User_Grade'] eq 0">
-                <option value="0" selected>注册用户</option>
-                <else/>
-             	<option value="0">注册用户</option>
-              	</if> 
-              	<if condition="$user['User_Grade'] eq 1">
-                <option value="1" selected>铜牌用户</option>
-                <else/>
-                <option value="1">铜牌用户</option>
-              	</if> 
-              	<if condition="$user['User_Grade'] eq 2">
-                <option value="2" selected>银牌用户</option>
-                <else/>
-                <option value="2">银牌用户</option>
-              	</if> 
-              	<if condition="$user['User_Grade'] eq 3">
-                <option value="3" selected>金牌用户</option>
-                <else/>
-                <option value="3">金牌用户</option>
-              	</if>               	        
-              </select>      
-    </td>
-    </tr>
+
+        <tr>
+            <td align=right valign="top" bgcolor="#FFFFFF">头像 ：</td>
+            <td bgcolor="#FFFFFF" style="COLOR: #880000">
+                <img id=user_face src="<?php if(isset($user[photo]))echo '/bike/Public/images/face/'.$user[photo].'.gif';else{echo '/bike/Public/images/face/0.gif';}?>" width="60" height="60">
+            </td>
+        </tr>
     
   <tr>
-    <td align=right bgcolor="#FFFFFF"><input type="hidden" value="{$user.User_Id}" name="id"/></td>
+    <td align=right bgcolor="#FFFFFF"><input type="hidden" value="{$user.id}" name="id"/></td>
     <td bgcolor="#FFFFFF" style="COLOR: #880000"><input type="submit" name="button" id="button" value="<?php if($action=='add'){echo '添加';}else{echo '修改';} ?>">
     </td></tr>
     </table>

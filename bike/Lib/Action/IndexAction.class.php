@@ -25,8 +25,64 @@ class IndexAction extends Action {
     	$this->assign('gg',$gglist);    	
 		$this->display();
     }
-    
-    
+
+    public function soft(){
+        header("Content-Type:text/html; charset=utf-8");
+        $news=M('soft');
+        import('ORG.Util.Page');
+        $gglist= $news->where('1=1')->select();
+        $count=count($gglist);
+        $page=new Page($count,10);//后台管理页面默认一页显示8条文章记录
+
+        $page->setConfig('prev', "&laquo; 上一页");//上一页
+        $page->setConfig('next', '下一页 &raquo;');//下一页
+        $page->setConfig('first', '&laquo; 第一页');//第一页
+        $page->setConfig('last', '最后页 &raquo;');//最后一页
+        $page->setConfig('theme',' %first% %upPage%  %linkPage%  %downPage% %end%');
+        //设置分页回调方法
+        $show=$page->show();
+        $gglist= $news->where('1=1')->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('softs',$gglist);
+        $this->assign('page_method',$show);
+        $this->display();
+    }
+
+    public function technolgy(){
+        header("Content-Type:text/html; charset=utf-8");
+        $news=M('jszc');
+        import('ORG.Util.Page');
+        $gglist= $news->where('1=1')->select();
+        $count=count($gglist);
+        $page=new Page($count,10);//后台管理页面默认一页显示8条文章记录
+
+        $page->setConfig('prev', "&laquo; 上一页");//上一页
+        $page->setConfig('next', '下一页 &raquo;');//下一页
+        $page->setConfig('first', '&laquo; 第一页');//第一页
+        $page->setConfig('last', '最后页 &raquo;');//最后一页
+        $page->setConfig('theme',' %first% %upPage%  %linkPage%  %downPage% %end%');
+        //设置分页回调方法
+        $show=$page->show();
+        $gglist= $news->where('1=1')->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('jszc',$gglist);
+        $this->assign('page_method',$show);
+
+        $this->display();
+    }
+    public function tech_detail(){
+        header("Content-Type:text/html; charset=utf-8");
+        $jszc=M('jszc');
+        $id = $_GET['Id'];
+
+        $new= $jszc->where("id=$id")->find();
+        $this->assign('jszc',$new);
+
+        $gg=M('Gonggao');
+        $gglist= $gg->where('isshow=1')->limit(3)->select();
+        $this->assign('gg',$gglist);
+        $this->display();
+    }
+
+
     public function gglist(){
     	header("Content-Type:text/html; charset=utf-8");
     	$news=M('Gonggao');	
@@ -415,29 +471,32 @@ class IndexAction extends Action {
     	$this->assign('gg',$gglist); 
     	
 	    if($_SESSION[username]==""){
-		  echo "<script>alert('请先登录后购物!');history.back();</script>"; 
+		  echo "<script>alert('请先登录!');history.back();</script>";
 		  exit;
 		 }
     	$username = $_SESSION['username'];
-    	$user_users=M('Users')->where(array('User_UserName'=>$username))->find();
+    	$user_users=M('userinfo')->where(array('usernc'=>$username))->find();
     	if($_POST){
-    		$email=$_POST[email];
+//    		$email=$_POST[email];
 			$truename=$_POST[truename];
-			$sfzh=$_POST[sfzh];
+			$sex=$_POST[sex];
 			$tel=$_POST[tel];
 			$qq=$_POST[qq];
-			$dizhi=$_POST[dizhi];
-			$youbian=$_POST[youbian];
+			$dizhi=$_POST[address];
+			$youbian=$_POST[yb];
+            $id_card=$_POST[id_card];
+            $photo=$_POST[photo];
 			
-			$data = array('User_Email'=>$email,
-					  'User_Name'=>$truename,
-					  'User_Identy'=>$sfzh,
-				  	  'User_Telephone'=>$tel,
-			 		  'User_QQ'=>$qq,
-					  'User_Address'=>$dizhi,
-					  'User_Integral'=>$youbian);	
+			$data = array('truename'=>$truename,
+					  'sex'=>$sex,
+					  'tel'=>$tel,
+				  	  'qq'=>$qq,
+			 		  'yb'=>$youbian,
+					  'address'=>$dizhi,
+                      'photo'=>$photo,
+					  'id_card'=>$id_card);
 			$id=$_POST['id'];
-			$id = M('Users')->where(array('User_Id'=>$id))->setField($data); // 根据条件保存修改的数据
+			$id = M('userinfo')->where(array('id'=>$id))->setField($data); // 根据条件保存修改的数据
 			//$url=U('/Product/index/');			
 			//$this->success('修改商品信息成功！',U('Product/index'));
 			echo "<script>alert('用户信息保存成功！');location.href='../Index/usercenter';</script>";
@@ -506,12 +565,12 @@ class IndexAction extends Action {
 				$password=md5(strval(trim($_POST['p1'])));
 				$email=strval(trim($_POST['email']));
 				$data=array(
-					'User_UserName'=>$username,
-					'User_Password'=>$password,
-					'User_Email'=>$email,
-					'User_Addtime'=>time(),
+					'usernc'=>$username,
+					'pwd'=>$password,
+					'email'=>$email,
+					'regtime'=>time(),
 				);		
-				$result = M('Users')->data($data)->add();
+				$result = M('userinfo')->data($data)->add();
 				if($result){
 					    echo "<script>alert('新用户注册成功,请重新登录！');location.href='../Index/index';</script>";
 						exit;
@@ -523,7 +582,6 @@ class IndexAction extends Action {
     	}   	
     	$this->display();
     }
-    
      //前台登录表单处理
 	public function loginHandle(){
 		if(!IS_POST){
@@ -537,14 +595,14 @@ class IndexAction extends Action {
 			  echo "<script>alert('验证码输入错误!');history.go(-1);</script>";
 			  exit;
 			 }
-			 $user_users=M('Users')->where(array('User_UserName'=>$username))->find();
+			 $user_users=M('userinfo')->where(array('usernc'=>$username))->find();
 			 			 
-			 if(!$user_users||$user_users['User_Password']!=$userpwd){
+			 if(!$user_users||$user_users['pwd']!=$userpwd){
 				$this->success('用户名或者密码错误!',U('Index/index'));
 			 }else{
 			 	//session_start()
-			 	$_SESSION['username'] = $user_users['User_UserName'];
-			 	$_SESSION['userid'] = $user_users['User_Id'];
+			 	$_SESSION['username'] = $user_users['usernc'];
+			 	$_SESSION['userid'] = $user_users['id'];
 			 	$_SESSION['admin'] = 0;			 	
 				$this->success('登录前台成功!',U('Index/index'));
 			 }	

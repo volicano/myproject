@@ -9,7 +9,7 @@
 <BODY>
 <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
   <TR height=28>
-    <TD background=__PUBLIC__/asset/images/title_bg1.jpg>当前位置: <a href="">后台首页</a>&gt;&gt;用户列表</TD></TR>
+    <TD background=__PUBLIC__/asset/images/title_bg1.jpg>当前位置: <a href="">后台首页</a>&gt;&gt;技术支持列表</TD></TR>
   <TR>
     <TD bgColor=#b1ceef height=1></TD></TR></TABLE>
 <TABLE cellSpacing=0 cellPadding=0 width="95%" align=center border=0>
@@ -17,7 +17,7 @@
     <TD></TD></TR>
   <TR height=22>
     <TD style="PADDING-LEFT: 20px; FONT-WEIGHT: bold; COLOR: #ffffff" 
-    align=middle background=__PUBLIC__/asset/images/title_bg2.jpg>用户列表</TD></TR>
+    align=middle background=__PUBLIC__/asset/images/title_bg2.jpg>技术支持列表</TD></TR>
   <TR bgColor=#ecf4fc height=12>
     <TD></TD></TR>
   </TABLE>
@@ -25,30 +25,26 @@
 <input type="hidden" name="action" id="action" value="del">
 <TABLE cellSpacing=2 cellPadding=5 width="95%" align=center border=0 bgcolor="#ecf4fc">
   <TR>
-   <th>用户编号</th>
-   <th>用户昵称</th>
-   <th>Email</th>
-   <th>注册时间</th>    
-   <th>性别</th>
-   <th>选项</th>
+    <TD style="text-align: center" width=56>ID</TD>
+    <TD width="534" style="text-align: center">问题标题</TD>
+    <TD width="133" style="text-align: center">添加时间</TD>
+      <TD width="120" style="text-align: center">是否展示</TD>
+    <TD width="180" style="text-align: center">操作</TD>
   </TR>
-<volist name="news_list" id="vo">
+ <volist name="technolgy" id="vo">
   <TR>
-    <TD bgcolor="#FFFFFF" style="text-align: left"><input type="checkbox" name="id[]" id="id[]" value="{$vo['User_Id']}">{$vo['id']}</TD>
-    <TD bgcolor="#FFFFFF" style="text-align: left">{$vo['usernc']}</TD>
-    <TD bgcolor="#FFFFFF" style="text-align: left">{$vo['email']}</TD>
-    <TD bgcolor="#FFFFFF" style="text-align: left">{$vo['regtime']|date='Y-m-d',###}</TD>
-    <TD bgcolor="#FFFFFF" style="text-align: left">
-    <if condition="$vo['sex'] eq 0">
-    	女
-    </if> 
-     <if condition="$vo['sex'] eq 1">
-    	男
-    </if>
+    <TD bgcolor="#FFFFFF" style="text-align: center"><input type="checkbox" name="id[]" id="id[]" value="{$vo['id']}">{$vo['id']}</TD>
+    <TD bgcolor="#FFFFFF" style="text-align: center">{$vo['question']}</TD>
+    <TD bgcolor="#FFFFFF" style="text-align: center">{$vo['createtime']|date='Y-m-d',###}</TD>
+      <TD bgcolor="#FFFFFF" style="text-align: center">
+          <if condition="$vo['is_show'] eq 1">
+              是
+          <else/>
+              否
+          </if>
 
-    </TD>
-    <TD bgcolor="#FFFFFF" style="text-align: left"><a href="edit?id={$vo['id']}"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="编辑|查看" /></a>
-   
+      </TD>
+    <TD bgcolor="#FFFFFF" style="text-align: center"><a href="edit?id={$vo['id']}"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="编辑" /></a>
     <a onclick="return confirm('确定删除吗？');" href="__URL__/delete/id/{$vo['id']}" title="删除"><img src="__PUBLIC__/Images/admin/icons/cross.png" alt="删除" /></a>
     </TD>
   </TR>    
@@ -67,7 +63,9 @@
     </TD>
     </TR>  
   <TR>
-   
+    <TD colspan="5" bgcolor="#FFFFFF"><input type="button" name="button" id="button" value="全选/反选" onClick="javascript:selectAllChk('id[]');">
+      &nbsp; <input type="submit" name="button2" id="button2" value="删除" onclick="return confirm('确定要删除?');"></TD>
+    </TR>  
     </TABLE>
  </form>
  </BODY></HTML>

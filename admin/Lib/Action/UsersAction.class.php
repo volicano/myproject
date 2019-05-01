@@ -51,7 +51,7 @@ class UsersAction extends Action {
     	if(session('?adminuser')){
 			$this->assign('username',session('adminuser'));
       	}      	
-    	$news=M('Users');	
+    	$news=M('userinfo');
     	$count=$news->count();
     	//分页显示文章列表，每页8篇文章
 		import('ORG.Util.Page');
@@ -65,7 +65,7 @@ class UsersAction extends Action {
 		$page->setConfig('theme',' %first% %upPage%  %linkPage%  %downPage% %end%');
         //设置分页回调方法
 		$show=$page->show();
-		$news_list=$news->field(array('User_Id','User_UserName','User_Email','User_Addtime','User_Grade'))->order('User_Id desc')->limit($page->firstRow.','.$page->listRows)->select();
+		$news_list=$news->field(array('id','usernc','email','regtime','sex'))->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
     //	$this->filter(&$news_list);
     			
 		
@@ -171,8 +171,8 @@ class UsersAction extends Action {
 		if($_GET['id']){
 		
 			$id = $_GET['id'];
-			$pro=M('Users');
-			$article_item=$pro->where("User_Id=$id")->find();		
+			$pro=M('userinfo');
+			$article_item=$pro->where("id=$id")->find();
 			$this->assign('user',$article_item);
 
 			$this->assign('title','修改用户个人信息');
@@ -186,42 +186,39 @@ class UsersAction extends Action {
      */
 	public function update(){		
 		header("Content-Type:text/html; charset=utf-8");	
-			$article=M('Users');
+			$article=M('userinfo');
 			if(empty($_POST['User_UserName'])){
 				  $this->error('用户昵称不能为空！');
 			} 
 			if(!empty($_POST['User_Password'])){			
-				$data = array('User_Sex'=>$_POST['sex'],
-						  'User_Password'=>md5($_POST['User_Password']),
-						  'User_Birthdat'=>strtotime($_POST['User_Birthdat']),
-						  'User_Balance'=>$_POST['User_Balance'],
-				 		  'User_Mobile'=>$_POST['User_Mobile'],
-				 		  'User_Telephone'=>$_POST['User_Telephone'],
-					 	  'User_Province'=>$_POST['User_Province'],
-				 		  'User_City'=>$_POST['User_City'],
-						  'User_Area'=>$_POST['User_Area'],
-						  'User_Address'=>$_POST['User_Address'],
-				 		  'User_QQ'=>$_POST['User_QQ'],
-						  'User_SafeQues'=>$_POST['User_SafeQues'],
-				 		  'User_SafeAnswer'=>$_POST['User_SafeAnswer'],
-						  'User_Grade'=>$_POST['User_Grade']);	
+				$data = array('sex'=>$_POST['sex'],
+						  'pwd'=>md5($_POST['User_Password']),
+						  'regtime'=>strtotime($_POST['User_Birthdat']),
+//						  'User_Balance'=>$_POST['User_Balance'],
+				 		  'tel'=>$_POST['User_Mobile'],
+				 		  'qq'=>$_POST['qq'],
+//					 	  'User_Province'=>$_POST['User_Province'],
+//				 		  'User_City'=>$_POST['User_City'],
+//						  'User_Area'=>$_POST['User_Area'],
+						  'address'=>$_POST['User_Address'],
+				 		  'yb'=>$_POST['yb'],
+						  'question'=>$_POST['User_SafeQues'],
+				 		  'answer'=>$_POST['User_SafeAnswer']);
+//						  'User_Grade'=>$_POST['User_Grade']);
 			}else{
-				$data = array('User_Sex'=>$_POST['sex'],						 
-						  'User_Birthdat'=>strtotime($_POST['User_Birthdat']),
-						  'User_Balance'=>$_POST['User_Balance'],
-				 		  'User_Mobile'=>$_POST['User_Mobile'],
-				 		  'User_Telephone'=>$_POST['User_Telephone'],
-					 	  'User_Province'=>$_POST['User_Province'],
-				 		  'User_City'=>$_POST['User_City'],
-						  'User_Area'=>$_POST['User_Area'],
-						  'User_Address'=>$_POST['User_Address'],
-				 		  'User_QQ'=>$_POST['User_QQ'],
-						  'User_SafeQues'=>$_POST['User_SafeQues'],
-				 		  'User_SafeAnswer'=>$_POST['User_SafeAnswer'],
-						  'User_Grade'=>$_POST['User_Grade']);	
+				$data = array('sex'=>$_POST['sex'],
+						  'regtime'=>strtotime($_POST['User_Birthdat']),
+//						  'User_Balance'=>$_POST['User_Balance'],
+				 		  'tel'=>$_POST['User_Mobile'],
+                          'qq'=>$_POST['qq'],
+                          'address'=>$_POST['User_Address'],
+                          'yb'=>$_POST['yb'],
+                          'question'=>$_POST['User_SafeQues'],
+                          'answer'=>$_POST['User_SafeAnswer']);
+//						  'User_Grade'=>$_POST['User_Grade']);
 			}		
 			$id=$_POST['id'];
-			$article->where('User_Id='.$id)->setField($data); // 根据条件保存修改的数据	
+			$article->where('id='.$id)->setField($data); // 根据条件保存修改的数据
 			//$url=U('/Product/index/');	
 			echo "<script>alert('用户信息修改成功！');location.href='../Users/index';</script>";		
 			//$this->success('用户信息修改成功！',U('Users/index'));		

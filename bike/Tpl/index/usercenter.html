@@ -14,7 +14,7 @@
     </table>
       <table width="550" height="20" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td><div align="left">&nbsp;&nbsp;当前用户&nbsp;<span style="color: #0000FF">》&nbsp;</span><?php echo $_SESSION[username];?>&nbsp;<span style="color: #0000FF">》</span><a href="__URL__/usercenter">修改个人信息</a>&nbsp;<span style="color: #0000FF">》</span><a href="userleaveword.php">用户留言</a>&nbsp;<span style="color: #0000FF">》</span><a href="changeuserpwd.php">修改密码</a>&nbsp;<span style="color: #0000FF">》</span><a href="__URL__/logout">注销离开&nbsp;</a></div></td>
+          <td><div align="left">&nbsp;&nbsp;当前用户&nbsp;<span style="color: #0000FF">》&nbsp;</span><?php echo $_SESSION[username];?>&nbsp;<span style="color: #0000FF">》</span><a href="__URL__/usercenter">修改个人信息</a>&nbsp;<span style="color: #0000FF">》</span></div></td>
         </tr>
       </table>
       <table width="500" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -28,33 +28,34 @@
         </tr>
         <tr>
           <td height="160" bgcolor="#FFEDBF"><table width="500" height="160" border="0" align="center" cellpadding="0" cellspacing="1">
-              <script language="javascript">
+
+              <script type="text/javascript">
 		     function chkinput1(form)
 			  {
-			    if(form.email.value=="")
-				{
-				  alert("电子邮箱不能为空!");
-				  form.email.select();
-				  return(false);
-				}
-				if(form.email.value.indexOf('@')<0)
-				{
-				  alert("电子邮箱输入错误!");
-				  form.email.select();
-				  return(false);
-				}
+			    // if(form.email.value=="")
+				// {
+				//   alert("电子邮箱不能为空!");
+				//   form.email.select();
+				//   return(false);
+				// }
+				// if(form.email.value.indexOf('@')<0)
+				// {
+				//   alert("电子邮箱输入错误!");
+				//   form.email.select();
+				//   return(false);
+				// }
 				if(form.truename.value=="")
 				{
 				  alert("真实姓名不能为空!");
 				  form.truename.select();
 				  return(false);
 				}
-				if(form.sfzh.value=="")
-				{
-				  alert("身份证号不能为空!");
-				  form.sfzh.select();
-				  return(false);
-				}
+				// if(form.sfzh.value=="")
+				// {
+				//   alert("身份证号不能为空!");
+				//   form.sfzh.select();
+				//   return(false);
+				// }
 				if(form.tel.value=="")
 				{
 				  alert("联系电话不能为空!");
@@ -70,6 +71,11 @@
 			   
 				return(true);
 			  }
+             $(document).ready(function(){
+			  $('#cancel').click(function (){
+                  history.back(-1);
+              });
+             });
 		   </script>
               <form name="form1" method="post" action="" onSubmit="return chkinput1(this)">
  
@@ -78,53 +84,108 @@
                   <td width="397" bgcolor="#FFFFFF"><div align="left"><?php echo $_SESSION[username];?></div></td>
                 </tr>
                 <tr>
-                  <td height="20" bgcolor="#FFFFFF"><div align="center">真实姓名：</div></td>
+                  <td height="20" bgcolor="#FFFFFF"><div align="center">* 真实姓名：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="truename" size="25" class="inputcssnull" value="<?php echo $info[User_Name];?>">
+                      <input type="text" name="truename" size="25" class="inputcssnull" value="<?php echo $info[truename];?>">
                   </div></td>
                 </tr>
+                  <tr>
+                      <td height="20" bgcolor="#FFFFFF"><div align="center">性别：</div></td>
+                      <td height="20" bgcolor="#FFFFFF"><div align="left">
+
+                          <select name="sex">
+                              <?php
+                                if($info[sex]==1){
+                              ?>
+                              <option value ="1" selected="selected">男</option>
+                              <?php
+                                }else{
+                              ?>
+                              <option value ="1">男</option>
+                              <?php
+                              }
+                              if(isset($info[sex])&&$info[sex]==0){
+                              ?>
+                              <option value ="0" selected="selected">女</option>
+                              <?php
+                                }else{
+                              ?>
+                              <option value ="0">女</option>
+                              <?php
+                              }
+                              ?>
+                          </select>
+                          <span style="color: #FF0000"></span></div></td>
+                  </tr>
                 <tr>
                   <td height="20" bgcolor="#FFFFFF"><div align="center">E-mail：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="email" size="25" class="inputcssnull" value="<?php echo $info[User_Email];?>">
+                      <input type="text" readonly="readonly" name="email" size="25" class="inputcssnull" value="<?php echo $info[email];?>">
                   </div></td>
                 </tr>
                 <tr>
                   <td height="20" bgcolor="#FFFFFF"><div align="center">QQ号码：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="qq" size="25" class="inputcssnull" value="<?php echo $info[User_QQ];?>">
+                      <input type="text" name="qq" size="25" class="inputcssnull" value="<?php echo $info[qq];?>">
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="20" bgcolor="#FFFFFF"><div align="center">联系电话：</div></td>
+                  <td height="20" bgcolor="#FFFFFF"><div align="center">*联系电话：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="tel" size="25" class="inputcssnull" value="<?php echo $info[User_Telephone];?>">
+                      <input type="text" name="tel" size="25" class="inputcssnull" value="<?php echo $info[tel];?>">
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="20" bgcolor="#FFFFFF"><div align="center">家庭住址：</div></td>
+                  <td height="20" bgcolor="#FFFFFF"><div align="center">*家庭住址：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="dizhi" size="25" class="inputcssnull" value="<?php echo $info[User_Address];?>">
+                      <input type="text" name="address" size="25" class="inputcssnull" value="<?php echo $info[address];?>">
                   </div></td>
                 </tr>
                 <tr>
                   <td height="20" bgcolor="#FFFFFF"><div align="center">邮政编码：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="youbian" size="25" class="inputcssnull" value="<?php echo $info[User_Integral];?>">
+                      <input type="text" name="yb" size="25" class="inputcssnull" value="<?php echo $info[yb];?>">
                   </div></td>
                 </tr>
+
                 <tr>
                   <td height="20" bgcolor="#FFFFFF"><div align="center">身份证号：</div></td>
                   <td height="20" bgcolor="#FFFFFF"><div align="left">
-                      <input type="text" name="sfzh" size="25" class="inputcssnull" value="<?php echo $info[User_Identy];?>">
+                      <input type="text" name="id_card" size="25" class="inputcssnull" value="<?php echo $info[id_card];?>">
                   </div></td>
                 </tr>
+
+                  <tr>
+                      <td height="20" bgcolor="#FFFFFF"><div align="center">头像：</div></td>
+                      <td height="20" bgcolor="#FFFFFF"><div align="left">
+                          <select name="photo" onchange="javascript:user_face.src='/bike/Public/images/face/'+this.value+'.gif'">
+                              <?php
+                              for($i=0;$i<=11;$i++){
+                                if(isset($info[photo])&&$info[photo]==$i){
+                              ?>
+                              <option selected="selected" value="<?php echo $i;?>"><?php echo $i.'.gif';?></option>
+                              <?php
+                                }else{
+                              ?>
+                              <option value="<?php echo $i;?>"><?php echo $i.'.gif';?></option>
+                              <?php }} ?>
+                          </select>
+                      </div></td>
+
+                  </tr>
+
+                  <tr>
+                      <td height="20" bgcolor="#FFFFFF"><div align="center"></div></td>
+                      <td width="393" bgcolor="#FFFFFF"><img id=user_face src="<?php if(isset($info[photo]))echo '/bike/Public/images/face/'.$info[photo].'.gif';else{echo '/bike/Public/images/face/0.gif';}?>" width="60" height="60"></td>
+                  </tr>
                 <tr>
-                  <td height="20" colspan="2" bgcolor="#FFFFFF"><div align="center">
-                      <input name="submit2" type="submit" class="buttoncss" value="更改">
-&nbsp;&nbsp;<input name="id" type="hidden" value="<?php echo $info[User_Id];?>">
-                <input name="reset" type="reset" class="buttoncss" value="取消更改">
-                  </div></td>
+                  <td height="20" colspan="2" bgcolor="#FFFFFF">
+                      <div align="center">
+                          <input name="submit2" type="submit" class="buttoncss" value="更改">
+    &nbsp;&nbsp;                  <input name="id" type="hidden" value="<?php echo $info[id];?>">
+                          <input name="reset" id="cancel" type="button" class="buttoncss" value="取消更改">
+                      </div>
+                  </td>
                 </tr>
               </form>
           </table></td>
@@ -132,7 +193,7 @@
       </table>
       <table width="500" height="20" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-          <td><div align="center" style="color: #0000FF">蓝色字体为可修改项</div></td>
+          <td><div align="center" style="color: #0000FF">"*"标记为必填项</div></td>
         </tr>
       </table></td>
   </tr>
