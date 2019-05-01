@@ -1,0 +1,49 @@
+<include file="top"/>
+<style type="text/css">
+<!--
+.style1 {color: #000000}
+-->
+</style>
+<table width="766" height="438" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="209" height="438" valign="top" bgcolor="#F0F0F0"> <include file="left"/></td>
+    <td width="557" align="center" valign="top" bgcolor="#FFFFFF"><table width="550" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+
+
+          	<td height="50">论坛板块列表</td>
+
+      </tr>
+    </table>
+      <table width="550" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td background="/bike/Public/images/line1.gif"></td>
+        </tr>
+      </table>
+      <table width="550" height="70" border="0" align="center" cellpadding="0" cellspacing="0">
+		<volist name="bbs" id="vo">
+          <table width="550" height="40" align="center" background="images/lt_15(2).jpg" border="0" cellspacing="1" cellpadding="0">
+
+            <tr>
+              <td width="200" height="20"><div align="left" style="color: #000000"><a href="__URL__/bbs_list?id={$vo.id}">【{$vo.name}】</a></div></td>
+              <td width="101" height="20"><div align="left"></div></td>
+              <td width="62"><div align="center" style="color: #000000"></div></td>
+              <td colspan="3"><div align="left">创建日期：{$vo.addtime|date='Y-m-d',###}</div></td>
+            </tr>
+
+          </table>
+
+
+
+        </volist>
+      </table>
+
+      </td>
+  </tr>
+  <tr>
+
+  </tr>
+</table>
+
+
+<include file="footer"/>

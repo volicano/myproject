@@ -26,6 +26,116 @@ class IndexAction extends Action {
 		$this->display();
     }
 
+    public function bbs_index()
+    {
+        header("Content-Type:text/html; charset=utf-8");
+        $new = M('bbs');
+        $bbslist = $new->where('1=1')->limit(5)->select();
+//        print_r($bbslist);die;
+        $this->assign('bbs', $bbslist);
+        $this->display();
+    }
+
+    public function bbs_list()
+    {
+        header("Content-Type:text/html; charset=utf-8");
+        $topic = M('topic');
+        $id = $_GET['id'];
+        $topiclist= $topic->where("typeid=$id")->where("tid=0")->select();
+        $this->assign('topiclist',$topiclist);
+        $this->assign('typeid', $id);
+
+        $gg=M('Gonggao');
+        $gglist= $gg->where('isshow=1')->limit(3)->select();
+        $this->assign('gg', $gglist);
+        $this->display();
+    }
+
+    public function bbs_detail()
+    {
+        header("Content-Type:text/html; charset=utf-8");
+        $topic = M('topic');
+        $user = M('userinfo');
+        $id = $_GET['id'];
+        $topic= $topic->where("id=$id")->find();
+        $userinfo= $user->where("id=$topic[user_id]")->find();
+        $topic['photo'] = '/bike/Public/images/face/'.$userinfo['photo'].'.gif';
+
+        $topics = M('topic');
+        $topicreply= $topics->where("tid=$id")->select();
+        foreach ($topicreply as $top){
+            $nf = $user->where("id=$top[user_id]")->find();
+            $pic = '/bike/Public/images/face/'.$nf['photo'].'.gif';
+            $top['photo'] = $pic;
+            $topicreplys[] =$top;
+        }
+        $this->assign('topicreply',$topicreplys);
+        $this->assign('topic',$topic);
+        $this->assign('topicid', $id);
+
+        $gg=M('Gonggao');
+        $gglist= $gg->where('isshow=1')->limit(3)->select();
+        $this->assign('gg', $gglist);
+        $this->display();
+    }
+
+    public function post()
+    {
+        header("Content-Type:text/html; charset=utf-8");
+        $topic = M('topic');
+        $id = $_GET['id'];
+        if($_POST){
+            $userid = session("userid");
+            $username=session("username");
+            $title=strval(trim($_POST['title']));
+            $content=strval(trim($_POST['content']));
+            $typeid=intval(trim($_POST['typeid']));
+            $tid=intval(trim($_POST['tid']));
+            $data=array(
+                'user_id'=>$userid,
+                'username'=>$username,
+                'title'=>$title,
+                'content'=>$content,
+                'addtime'=>time(),
+                'typeid'=>$typeid,
+                'tid'=>$tid
+            );
+            $result = $topic->data($data)->add();
+            if($result){
+                echo "<script>alert('发表成功!');location.href='../bbs_list?id=$typeid';</script>";
+                exit;
+            }else{
+                $this->error('发表出错！');
+            }
+        }
+//        $topiclist= $topic->where("typeid=$id")->select();
+//        $this->assign('topiclist',$topiclist);
+        $this->assign('typeid', $id);
+         $gg=M('Gonggao');
+        $gglist= $gg->where('isshow=1')->limit(3)->select();
+        $this->assign('gg', $gglist);
+        $this->display();
+    }
+    public function bbs(){
+        header("Content-Type:text/html; charset=utf-8");
+        $news = M('soft');
+        import('ORG.Util.Page');
+        $gglist= $news->where('1=1')->select();
+        $count=count($gglist);
+        $page=new Page($count,10);//后台管理页面默认一页显示8条文章记录
+
+        $page->setConfig('prev', "&laquo; 上一页");//上一页
+        $page->setConfig('next', '下一页 &raquo;');//下一页
+        $page->setConfig('first', '&laquo; 第一页');//第一页
+        $page->setConfig('last', '最后页 &raquo;');//最后一页
+        $page->setConfig('theme',' %first% %upPage%  %linkPage%  %downPage% %end%');
+        //设置分页回调方法
+        $show=$page->show();
+        $gglist= $news->where('1=1')->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('softs',$gglist);
+        $this->assign('page_method',$show);
+        $this->display();
+    }
     public function soft(){
         header("Content-Type:text/html; charset=utf-8");
         $news=M('soft');

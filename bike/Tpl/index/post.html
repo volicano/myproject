@@ -1,0 +1,79 @@
+<include file="top"/>
+<style type="text/css">
+<!--
+.style1 {color: #000000}
+-->
+</style>
+
+<table width="766" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="209" valign="top" bgcolor="#FFFFFF">
+    <include file="left"/>
+    </td>
+    <td width="581" align="center" valign="top" bgcolor="#FFFFFF">
+    <table width="557" height="6" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td></td>
+      </tr>
+    </table>      
+      <table width="530" height="20" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="25" bgcolor="#FFEDBF">&nbsp;&nbsp;论坛发帖</td>
+        </tr>
+      </table>
+
+
+
+
+  <form name="form1" method="post" action="" onSubmit="return chkinput(this)">
+  <table width="530" border="0" align="center" cellpadding="0" cellspacing="0">
+
+            <tr>
+              <td height="150" bgcolor="#999999"><table width="530" border="0" align="center" cellpadding="0" cellspacing="1">
+                  <script language="javascript">
+		    function chkinput(form)
+			{
+                if(form.title.value=="")
+                {
+                    alert("请输入标题内容!");
+                    form.title.select();
+                    return(false);
+                }
+			   if(form.content.value=="")
+			   {
+			     alert("请输入评论内容!");
+				 form.content.select();
+				 return(false);
+			   }
+			   return(true);
+			}
+		  </script>
+                  <tr>
+                      <td height="125" bgcolor="#FFFFFF"><div align="center">标题：</div></td>
+                      <td height="125" bgcolor="#FFFFFF"><div align="left">
+                          <input type="text" name="title" value="" onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'">
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td height="125" bgcolor="#FFFFFF"><div align="center">内容：</div></td>
+                    <td height="125" bgcolor="#FFFFFF"><div align="left">
+                        <input type="hidden" name="typeid" value="{$typeid}">
+                        <textarea name="content" cols="70" rows="4" class="inputcss" style="background-color:#e8f4ff " onMouseOver="this.style.backgroundColor='#ffffff'" onMouseOut="this.style.backgroundColor='#e8f4ff'"></textarea>
+                    </div></td>
+                  </tr>
+              </table></td>
+            </tr>
+        </table>
+          <table width="530" height="25" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td><div align="center">
+                  <input name="submit2" type="submit" class="buttoncss" value="发表">
+&nbsp;&nbsp;&nbsp;</div></td>
+            </tr>
+          </table>
+      </form>
+
+
+</td></tr>
+</table>
+<include file="footer"/>
