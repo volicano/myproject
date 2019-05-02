@@ -99,19 +99,21 @@ class IndexAction extends Action {
                 'title'=>$title,
                 'content'=>$content,
                 'addtime'=>time(),
+                'lastreplytime'=>time(),
                 'typeid'=>$typeid,
                 'tid'=>$tid
             );
             $result = $topic->data($data)->add();
-            if($result){
+            if(!$tid&&$result){
                 echo "<script>alert('发表成功!');location.href='../Index/bbs_list?id=$typeid';</script>";
+                exit;
+            }elseif($tid&&$result){
+                echo "<script>alert('回复成功!');self.location=document.referrer;</script>";
                 exit;
             }else{
                 $this->error('发表出错！');
             }
         }
-//        $topiclist= $topic->where("typeid=$id")->select();
-//        $this->assign('topiclist',$topiclist);
         $this->assign('typeid', $id);
          $gg=M('Gonggao');
         $gglist= $gg->where('isshow=1')->limit(3)->select();
