@@ -17,20 +17,19 @@
         </tr>
         <volist name="softs" id="vo">
         <tr>
-          <td height="20"><div align="left">{$vo.softname}</div></td>
+          <td height="20"><div align="center">{$vo.softname}</div></td>
           <td height="20"><div align="center">{$vo.addtime|date='Y-m-d',###}</div></td>
           <td height="20"><div align="center"><a href="/bike/Public/Uploads/software/{$vo.address}">下载</a></div></td>
         </tr>
  		</volist> 
         <tr>
           <td height="20" colspan="3"> &nbsp;
-              <div align="right"> {$page_method}
-   
-            </div></td>
+              <div align="right">
+                {$page_method}
+              </div>
+          </td>
         </tr>
       </table>
-
-
 </td>
   </tr>
 </table>

@@ -12,7 +12,7 @@ class SoftwareAction extends Action {
     	$count=$news->count();
     	//分页显示文章列表，每页8篇文章
 		import('ORG.Util.Page');
-		$page=new Page($count,20);//后台管理页面默认一页显示8条文章记录
+		$page=new Page($count,10);//后台管理页面默认一页显示8条文章记录
 
         $page->setConfig('prev', "&laquo; Previous");//上一页
         $page->setConfig('next', 'Next &raquo;');//下一页
@@ -22,7 +22,7 @@ class SoftwareAction extends Action {
         //设置分页回调方法
 		$show=$page->show();
 		$news_list=$news->field(array('id','softname','addtime','click'))->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
-    //	$this->filter(&$news_list);
+
     	$this->assign('news_list',$news_list);
     	$this->assign('page_method',$show);
     	$this->assign('cat_count',$count);
@@ -42,7 +42,6 @@ class SoftwareAction extends Action {
          }
          return $tree;
    }
-    
     
  	public function insert(){ 			
         $gg   =   D('Gonggao'); 
@@ -82,7 +81,6 @@ class SoftwareAction extends Action {
 	    }      
     }
 
-    
 	function edit(){
 		header("Content-Type:text/html; charset=utf-8");
 		if($_GET['id']){		
@@ -94,7 +92,6 @@ class SoftwareAction extends Action {
 			$this->display();
 		}	
 	}
-	
 	
 	public function add(){		
 		header("Content-Type:text/html; charset=utf-8");
@@ -115,15 +112,12 @@ class SoftwareAction extends Action {
             $data['addtime'] = NOW_TIME;
             $result =   $model->add($data);
             if($result) {
-
                 echo "<script>alert('添加成功！');location.href='../Software/index';</script>";
                 exit(0);
-                //  $this->success('广告添加成功！');
             }else{
                 $this->error('数据写入错误！');
             }
 		}
-		
 		$this->assign('action','add');
 		$this->display();
 	}
@@ -137,19 +131,13 @@ class SoftwareAction extends Action {
 		$article=M('soft');
 		if(empty($_POST['title'])){
 			  $this->error('软件名称不能为空！');
-		} 	
-		
-    	$data = array('softname'=>$_POST['title'],'content'=>$_POST['editorValue']);
+		}
+    	$data = array('softname'=>$_POST['title']);
     	$id=$_POST['id'];
 		$fl = $article->where('id='.$id)->setField($data); // 根据条件保存修改的数据
-
 		if($fl){
 			echo "<script>alert('修改成功！');location.href='../Software/index';</script>";
-			//$url=U('/Gonggao/index/');			
-			//redirect($url,0, '跳转中...');
 		}
-	
-	    
 	}
 	
 	/**
@@ -164,7 +152,4 @@ class SoftwareAction extends Action {
 			$this->error($article->getLastSql());
 		}
 	}
-
-    
-    
 }

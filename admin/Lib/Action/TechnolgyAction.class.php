@@ -21,7 +21,7 @@ class TechnolgyAction extends Action {
 		$page->setConfig('theme',' %first% %upPage%  %linkPage%  %downPage% %end%');
         //设置分页回调方法
 		$show=$page->show();
-		$news_list=$news->field(array('id','question','author','createtime'))->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
+		$news_list=$news->field(array('id','question','author','createtime','is_show'))->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
     //	$this->filter(&$news_list);
     	$this->assign('technolgy',$news_list);
     	$this->assign('page_method',$show);
@@ -86,7 +86,6 @@ class TechnolgyAction extends Action {
 	public function add(){		
 		header("Content-Type:text/html; charset=utf-8");
 		if($_POST){
-
             $model = M('jszc');
             //保存当前数据对象
             $data['question'] =  $_POST['title'];
@@ -98,12 +97,10 @@ class TechnolgyAction extends Action {
             if($result) {
                 echo "<script>alert('添加成功！');location.href='../Technolgy/index';</script>";
                 exit(0);
-                //  $this->success('广告添加成功！');
             }else{
                 $this->error('数据写入错误！');
             }
 		}
-		
 		$this->assign('action','add');
 		$this->display();
 	}
@@ -117,19 +114,15 @@ class TechnolgyAction extends Action {
 		$article=M('jszc');
 		if(empty($_POST['title'])){
 			  $this->error('问题名称不能为空！');
-		} 	
-		
+		}
     	$data = array('question'=>$_POST['title'],'author'=>$_POST['author'],'answer'=>$_POST['editorValue'],'is_show'=>$_POST['isshow']);
     	$id=$_POST['id'];
 		$fl = $article->where('id='.$id)->setField($data); // 根据条件保存修改的数据
-
 		if($fl){
 			echo "<script>alert('修改成功！');location.href='../Technolgy/index';</script>";
-			//$url=U('/Gonggao/index/');			
-			//redirect($url,0, '跳转中...');
-		}
-	
-	    
+		}else{
+            echo "<script>alert('修改失败！');location.href='../Technolgy/index';</script>";
+        }
 	}
 	
 	/**
@@ -137,7 +130,7 @@ class TechnolgyAction extends Action {
      * @功能	删除文章
      */
 	function delete(){		
-    	$article=M('jszcs');
+    	$article=M('jszc');
 		if($article->delete($_GET['id'])){
 			$this->success('删除成功');
 		}else{

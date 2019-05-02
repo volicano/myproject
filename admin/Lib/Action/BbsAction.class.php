@@ -127,9 +127,9 @@ class BbsAction extends Action {
      * @功能	删除文章
      */
 	function delete(){		
-    	$article=M('Gonggao');
+    	$article=M('topic');
 		if($article->delete($_GET['id'])){
-			$this->success('广告删除成功');
+			$this->success('删除成功');
 		}else{
 			$this->error($article->getLastSql());
 		}

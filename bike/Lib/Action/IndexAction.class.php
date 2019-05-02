@@ -31,8 +31,10 @@ class IndexAction extends Action {
         header("Content-Type:text/html; charset=utf-8");
         $new = M('bbs');
         $bbslist = $new->where('1=1')->limit(5)->select();
-//        print_r($bbslist);die;
         $this->assign('bbs', $bbslist);
+        $gg=M('Gonggao');
+        $gglist= $gg->where('isshow=1')->limit(3)->select();
+        $this->assign('gg', $gglist);
         $this->display();
     }
 
@@ -102,7 +104,7 @@ class IndexAction extends Action {
             );
             $result = $topic->data($data)->add();
             if($result){
-                echo "<script>alert('发表成功!');location.href='../bbs_list?id=$typeid';</script>";
+                echo "<script>alert('发表成功!');location.href='../Index/bbs_list?id=$typeid';</script>";
                 exit;
             }else{
                 $this->error('发表出错！');
