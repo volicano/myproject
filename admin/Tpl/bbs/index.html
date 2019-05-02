@@ -34,7 +34,13 @@
  <volist name="topics" id="vo">
   <TR>
     <TD bgcolor="#FFFFFF" style="text-align: center"><input type="checkbox" name="id[]" id="id[]" value="{$vo['id']}">{$vo['id']}</TD>
-    <TD bgcolor="#FFFFFF" style="text-align: center">{$vo['title']}</TD>
+    <TD bgcolor="#FFFFFF" style="text-align: center">
+        <if condition="$vo['title'] neq ''">
+            {$vo['title']}
+            <else/>
+            回复
+        </if>
+    </TD>
       <TD bgcolor="#FFFFFF" style="text-align: center">[{$vo['pk']}]</TD>
     <TD bgcolor="#FFFFFF" style="text-align: center">{$vo['addtime']|date='Y-m-d',###}</TD>
     <TD bgcolor="#FFFFFF" style="text-align: center">
